@@ -1,0 +1,12 @@
+{
+	"version": "0.1.0",
+	"command": "/Users/anandchowdhary/processing-java",
+	"isShellCommand": true,
+	"showOutput": "never",
+	"args": [
+		"--force",
+		"--sketch=${workspaceRoot}",
+		"--output=${workspaceRoot}\\out",
+		"--run"
+	]
+}
