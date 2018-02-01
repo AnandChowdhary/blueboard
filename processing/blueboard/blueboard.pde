@@ -82,31 +82,32 @@ void draw() {
 			}
 		}
 	}
-	String jsonString = "{ \"gender\": \"male\", \"technology\": 2, \"fashion\": 4, \"food\": 4 }";
-				JSONObject json = parseJSONObject(jsonString);
-				String gender = json.getString("gender");
-				int technologyPoints = json.getInt("technology");
-				technologyPoints = technologyPoints > 10 ? 10 : technologyPoints;
-				int fashionPoints = json.getInt("fashion");
-				fashionPoints = fashionPoints > 10 ? 10 : fashionPoints;
-				int foodPoints = json.getInt("food");
-				foodPoints = foodPoints > 10 ? 10 : foodPoints;
-				for (int i = 0; i < technologyPoints; i++) {
-					adBiases = append(adBiases, "technology");
-				}
-				for (int i = 0; i < fashionPoints; i++) {
-					adBiases = append(adBiases, "fashion-" + gender);
-				}
-				for (int i = 0; i < foodPoints; i++) {
-					adBiases = append(adBiases, "food");
-				}
-				if (done == 0) {
-					nowImage = adBiases[int(random(0, technologyPoints + fashionPoints + foodPoints))];
-					ADIMAGE = loadImage("ads/" + nowImage + "/" + int(random(0, 5)) + ".jpg");
-					println("CHANGED IMAGE: " + nowImage);
-					done = 1;
-				}
-				println(nowImage);
+	if (nowImage == "generic") {
+		String jsonString = "{ \"gender\": \"male\", \"technology\": " + int(random(0, 11)) + ", \"fashion\": " + int(random(0, 11)) + ", \"food\": " + int(random(0, 11)) + " }";
+		JSONObject json = parseJSONObject(jsonString);
+		String gender = json.getString("gender");
+		int technologyPoints = json.getInt("technology");
+		technologyPoints = technologyPoints > 10 ? 10 : technologyPoints;
+		int fashionPoints = json.getInt("fashion");
+		fashionPoints = fashionPoints > 10 ? 10 : fashionPoints;
+		int foodPoints = json.getInt("food");
+		foodPoints = foodPoints > 10 ? 10 : foodPoints;
+		for (int i = 0; i < technologyPoints; i++) {
+			adBiases = append(adBiases, "technology");
+		}
+		for (int i = 0; i < fashionPoints; i++) {
+			adBiases = append(adBiases, "fashion-" + gender);
+		}
+		for (int i = 0; i < foodPoints; i++) {
+			adBiases = append(adBiases, "food");
+		}
+		if (done == 0) {
+			nowImage = adBiases[int(random(0, technologyPoints + fashionPoints + foodPoints))];
+			ADIMAGE = loadImage("ads/" + nowImage + "/" + int(random(0, 5)) + ".jpg");
+			println("CHANGED IMAGE: " + nowImage);
+			done = 1;
+		}
+	}
 	// if (previous.equals(nowImage)) {
 		image(ADIMAGE, 0, 0);	
 		// previous = nowImage;
