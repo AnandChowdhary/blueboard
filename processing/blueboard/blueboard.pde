@@ -82,7 +82,7 @@ void draw() {
 			}
 		}
 	}
-	if (nowImage == "generic") {
+	if (nowImage.equals("generic")) {
 		String jsonString = "{ \"gender\": \"male\", \"technology\": " + int(random(0, 11)) + ", \"fashion\": " + int(random(0, 11)) + ", \"food\": " + int(random(0, 11)) + " }";
 		JSONObject json = parseJSONObject(jsonString);
 		String gender = json.getString("gender");
@@ -118,7 +118,7 @@ void draw() {
 	textSize(weatherSize);
 	text(str((Integer.parseInt(weatherData.getString("temp")) - 32) * 5 / 9) + "°C " + weatherData.getString("text"), 20, 40);
 	text((day() > 9 ? day() : "0" + day()) + "-" + (month() > 9 ? month() : "0" + month()) + "-" + year() + " " + (hour() > 9 ? hour() : "0" + hour()) + ":" + (minute() > 9 ? minute() : "0" + minute()), 20, weatherSize + 50);
-	if (millis() > loopNumber * 10000) {
+	if (millis() > loopNumber * 30000) {
 		adBiases = new String[0];
 		done = 0;
 		// updateWeather();
